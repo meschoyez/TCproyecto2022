@@ -12,6 +12,8 @@ fragment LETRA : [A-Za-z] ;
 
 PA : '(' ;
 PC : ')' ;
+LA : '{' ;
+LC : '}' ;
 SUMA : '+';
 INT : 'int' ;
 NUMERO : DIGITO+ ;
@@ -20,14 +22,28 @@ ID : (LETRA | '_')(LETRA | DIGITO | '_')* ;
 WS : [ \t\n\r] -> skip;
 OTRO : . ;
 
-si : s EOF ;
+// si : s EOF ;
 
-s : PA s PC s
-  |
-  ;
+// s : PA s PC s
+  // |
+  // ;
 
 // s : ID     { System.out.println("ID ->" + $ID.getText() + "<--"); }         s
 //   | NUMERO { System.out.println("NUMERO ->" + $NUMERO.getText() + "<--"); } s
 //   | OTRO   { System.out.println("Otro ->" + $OTRO.getText() + "<--"); }     s
 //   | EOF
 //   ;
+
+programa : instrucciones EOF ;
+
+instrucciones : instruccion instrucciones
+              |
+              ;
+
+instruccion : inst_simple
+            | bloque
+            ;
+
+bloque : LA instrucciones LC ;
+
+inst_simple : . ;
