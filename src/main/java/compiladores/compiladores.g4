@@ -15,6 +15,10 @@ PC : ')' ;
 LA : '{' ;
 LC : '}' ;
 SUMA : '+';
+RESTA : '-' ;
+MULT : '*' ;
+DIV : '/' ;
+MOD : '%' ;
 INT : 'int' ;
 NUMERO : DIGITO+ ;
 ID : (LETRA | '_')(LETRA | DIGITO | '_')* ;
@@ -40,10 +44,30 @@ instrucciones : instruccion instrucciones
               |
               ;
 
-instruccion : inst_simple
-            | bloque
+// instruccion : inst_simple
+instruccion : bloque
+            | e
             ;
 
 bloque : LA instrucciones LC ;
 
 inst_simple : . ;
+
+e : term exp ;
+
+exp : SUMA  term exp
+    | RESTA term exp
+    |
+    ;
+
+term : factor t ;
+
+t : MULT factor t
+  | DIV  factor t
+  | MOD  factor t
+  |
+  ;
+
+factor : NUMERO
+       | PA e PC 
+       ;
