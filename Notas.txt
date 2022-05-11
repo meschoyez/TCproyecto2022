@@ -70,4 +70,57 @@ $ s                  ) $  derivar
 $                    ) $  ERROR
 
 
+AS Ascendente
+
+Reglas : Desplazar
+         Reducir
+
+entrada: (())()
+
+Regla: s : ( s ) s
+         |
+         ;
+
+$            ( ( ) ) ( ) $ Desplazar
+$ (            ( ) ) ( ) $ Desplazar
+$ ( (            ) ) ( ) $ Reducir
+$ ( ( s          ) ) ( ) $ Desplazar
+$ ( ( s )          ) ( ) $ Reducir
+$ ( ( s ) s        ) ( ) $ Reducir
+$ ( s              ) ( ) $ Desplazar
+$ ( s )              ( ) $ Desplazar
+$ ( s ) (              ) $ Reducir
+$ ( s ) ( s            ) $ Desplazar
+$ ( s ) ( s )            $ Reducir
+$ ( s ) ( s ) s          $ Reducir
+$ ( s ) s                $ Reducir
+$ s                      $ OK
+
+entrada: (()
+
+Regla: s : ( s ) s
+         |
+         ;
+
+$            ( ( ) $ Desplazar
+$ (            ( ) $ Desplazar
+$ ( (            ) $ Reducir
+$ ( ( s          ) $ Desplazar
+$ ( ( s )          $ Reducir
+$ ( ( s ) s        $ Reducir
+$ ( s              $ ERROR
+
+
+entrada: ())
+
+Regla: s : ( s ) s
+         |
+         ;
+
+$            ( ) ) $ Desplazar
+$ (            ) ) $ Reducir
+$ ( s          ) ) $ Desplazar
+$ ( s )          ) $ Reducir
+$ ( s ) s        ) $ Reducir
+$ s              ) $ ERROR
 
