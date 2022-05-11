@@ -69,5 +69,6 @@ t : MULT factor t
   ;
 
 factor : NUMERO
+       | ID
        | PA e PC 
        ;
