@@ -8,12 +8,12 @@ import org.antlr.v4.runtime.CommonTokenStream;
 // Las diferentes entradas se explicaran oportunamente
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, Compilador!!!");
         // create a CharStream that reads from file
-        // CharStream input = CharStreams.fromFileName("input/entrada.txt");
+         CharStream input = CharStreams.fromFileName("input/entrada.txt");
         // CharStream input = CharStreams.fromFileName("input/fechas.txt");
         // CharStream input = CharStreams.fromFileName("input/parentesis.txt");
-        CharStream input = CharStreams.fromFileName("input/programa.txt");
+        //CharStream input = CharStreams.fromFileName("input/programa.txt");
+        System.out.println("Hello, Compilador!!!");
 
         // create a lexer that feeds off of input CharStream
         compiladoresLexer lexer = new compiladoresLexer(input);
@@ -32,7 +32,7 @@ public class App {
 
         // Solicito al parser que comience indicando una regla gramatical
         // En este caso la regla es el simbolo inicial
-        parser.programa();
+        parser.prog();
         // ParseTree tree =  parser.s();
         // Conectamos el visitor
         // Caminante visitor = new Caminante();
